@@ -1,0 +1,124 @@
+
+:root {
+    --dark: #374151;
+    --darker: #1F2937;
+    --darkest: #111827;
+	--grey: #6B7280;
+	--pink: #EC4899;
+	--purple: #8B5CF6;
+	--light: #EEE;
+}
+
+* {
+    margin: 0px;
+}
+
+body {
+    display: grid;
+    flex-direction: row;
+    min-height: 1vh;
+    background: var(--dark);
+    color: white;
+    /* max-width: 1250px; */
+    
+}
+
+h1{
+    text-align: center; 
+    margin: 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+#container-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* max-width: 80rem; */
+    text-align: center;
+    
+}
+
+input, button {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+    /* appearance: none;
+    border: none;
+    outline: none;
+    background: none; */
+}
+
+#expenseButton {
+    margin: 1rem;
+    max-width: 10vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 8rem;
+}
+
+#removeButton {
+margin-top: 0.1rem;
+margin-bottom: 0.1rem;
+padding: 0.5rem;
+
+}
+
+#inpDate {
+    flex 1 1 0%;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+}
+
+input[type="date"] {
+    position: relative;
+}
+
+#expenseTable {
+    position: relative;
+    border: 1px solid black;
+    padding: 4px 8px;
+    border-collapse: collapse;
+    
+}
+
+/* create a new arrow, because we are going to mess up the native one */
+input[type="date"]:after {
+    content: "\25BC"; 
+    color: #555;
+    padding: 0 5px;
+}
+
+/* change color of arrow on hover */
+input[type="date"]:hover:after {
+    color: #bf1400;
+}
+
+    /* make the native calendar arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+/* adjust increase/decrease button so it stays overtop of other HYML elements */
+input[type="date"]::-webkit-inner-spin-button {
+    z-index: 1; 
+}
+
+/* adjust clear button so it stays overtop of other HTML elements*/
+input[type="date"]::-webkit-clear-button {
+    z-index: 1;
+}
