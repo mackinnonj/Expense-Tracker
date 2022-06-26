@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Expense tracker</title>
+    
+
+</head>
+<body>
+
+    <h1>Expense Tracker</h1>
+    <container id="container-grid">
+        
+        <div id="box-1">
+            <h2>Date:</h2>
+            <input type="date" name="date" id="inpDate">
+        </div>
+
+        <div id="box-2">
+            <h2>Name:</h2>
+            <input type="text" name="Type" id="inpName">
+        </div>
+
+        <div id="box-3">
+            <h2>Type:</h2>
+            <input list="expense" id="inpType" name="myExpense" /></label>
+        </div>
+
+        <!-- Drop down menu for "type" of expense -->
+            <datalist id="expense">
+              <option value="Credit Card">
+              <option value="Debit Card">
+              <option value="Cash">
+              <option value="eTransfer">
+              <option value="other">
+            </datalist>
+
+        <div id="box-4">
+            <h2>Amount:</h2>
+            <input type="text" name="" id="inpAmount">
+        </div>
+    </container>
+
+    <button id="expenseButton">Add Expense</button>
+
+    <table id="expenseTable" border="1">
+        <!-- <caption>Expense Table</caption> -->
+        <thead>
+            <tr>
+                <th>Date:</th>
+                <th>Name:</th>
+                <th>Type:</th>
+                <th>Amount:</th>
+            </tr>
+        </thead>
+    </table>
+
+
+<script>
+
+let inpAmount = document.getElementById("inpAmount");
+let inpDate = document.getElementById("inpDate");
+let inpType = document.getElementById("inpType");
+let inpName = document.getElementById("inpName");
+let expenseButton = document.getElementById("expenseButton");
+let expenseTable = document.getElementById("expenseTable");
+
+// Adding the input fields to a table element on button click //
+expenseButton.addEventListener("click", function(){
+
+    let tableRow = document.createElement("tr")
+    let table_DataCell1 = document.createElement('td');
+    // let removeButton = document.createElement("input")
+    
+    // removeButton.setAttribute("id", "button")
+    // removeButton.setAttribute("type", "button")
+    // removeButton.setAttribute("value", "X")
+
+    var row = expenseTable.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    cell1.innerHTML = inpDate.value + " ";
+    cell2.innerHTML = inpName.value + " ";
+    cell3.innerHTML = inpType.value + " ";
+    cell4.innerHTML = inpAmount.value + " ";
+
+        //Remove button
+    let closeButton = document.createElement("button");
+    closeButton.id = "closeButton";
+    closeButton.innerText ="X";
+    cell5.appendChild(closeButton);
+
+    // Remove button function
+    closeButton.addEventListener('click', function(){
+        // The parent for cell5 is the tr element and the parent of tr is theader, so the variable deleteRow represents theader
+        let deleteRow = cell5.parentElement.parentElement;
+        
+        // deleteRow represents theader and theader's child is tr
+        deleteRow.removeChild(row);
+    })
+    
+    inpName.value = ""; //makes input fields start as empty
+    inpType.value = ""; 
+    inpDate.value = ""; 
+    inpAmount.value = ""; 
+    
+})
+
+
+</script>
+
+</body>
+</html>
